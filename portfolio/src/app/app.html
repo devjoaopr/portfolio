@@ -1,0 +1,274 @@
+<!-- ==================== HEADER ==================== -->
+<header
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  [ngClass]="isScrolled ? 'py-3.5 bg-[#05070d]/85 backdrop-blur-md border-b border-white/10' : 'py-5 bg-transparent'"
+>
+  <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between">
+    <a class="font-mono text-xl font-bold text-slate-100 cursor-pointer" (click)="scrollTo('home')">
+      <span class="text-[#2f7dfa]">&lt;</span>Dev<span class="text-[#2f7dfa]">/&gt;</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hidden md:block">
+      <ul class="flex gap-8">
+        <li>
+          <a (click)="scrollTo('about')"
+             class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
+                    after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a (click)="scrollTo('skills')"
+             class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
+                    after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
+            Habilidades
+          </a>
+        </li>
+        <li>
+          <a (click)="scrollTo('projects')"
+             class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
+                    after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
+            Projetos
+          </a>
+        </li>
+        <li>
+          <a (click)="scrollTo('contact')"
+             class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
+                    after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
+            Contato
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Botão hambúrguer (mobile) -->
+    <button (click)="toggleMenu()" class="md:hidden flex flex-col gap-1.5" aria-label="Menu">
+      <span class="w-[22px] h-0.5 bg-slate-100 transition-transform"
+            [ngClass]="isMenuOpen ? 'translate-y-[7px] rotate-45' : ''"></span>
+      <span class="w-[22px] h-0.5 bg-slate-100 transition-opacity"
+            [ngClass]="isMenuOpen ? 'opacity-0' : ''"></span>
+      <span class="w-[22px] h-0.5 bg-slate-100 transition-transform"
+            [ngClass]="isMenuOpen ? '-translate-y-[7px] -rotate-45' : ''"></span>
+    </button>
+  </div>
+
+  <!-- Nav mobile (off-canvas) -->
+  <nav
+    class="md:hidden fixed top-0 h-screen w-[70%] bg-[#0b0f19] border-l border-white/10 pt-24 transition-[right] duration-300"
+    [ngClass]="isMenuOpen ? 'right-0' : '-right-full'"
+  >
+    <ul class="flex flex-col items-center gap-7">
+      <li><a (click)="scrollTo('about')" class="cursor-pointer text-slate-300">Sobre</a></li>
+      <li><a (click)="scrollTo('skills')" class="cursor-pointer text-slate-300">Habilidades</a></li>
+      <li><a (click)="scrollTo('projects')" class="cursor-pointer text-slate-300">Projetos</a></li>
+      <li><a (click)="scrollTo('contact')" class="cursor-pointer text-slate-300">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="bg-[#05070d]">
+
+  <!-- ==================== HERO / SOBRE MIM (RESUMO) ==================== -->
+  <section id="home" class="relative min-h-screen flex items-center">
+    <div class="max-w-[1100px] mx-auto px-6 w-full">
+      <div class="max-w-[720px]">
+        <p class="font-mono text-[#5aa9ff] mb-3">Olá, eu sou</p>
+
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-[#5aa9ff] bg-clip-text text-transparent">
+          Seu Nome
+        </h1>
+
+        <h2 class="text-xl md:text-2xl font-medium text-slate-400 mt-2 mb-5">
+          Desenvolvedor Full Stack
+        </h2>
+
+        <p class="text-slate-400 leading-relaxed max-w-[560px] mb-8">
+          Eu construo aplicações web limpas, escaláveis e performáticas. Apaixonado por resolver
+          problemas reais com código.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <button
+            (click)="scrollTo('contact')"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
+                   bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]">
+            Entre em contato
+          </button>
+          <a
+            href="assets/cv.pdf" target="_blank"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
+                   border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
+            <ng-icon name="lucideDownload" size="16" />
+            Baixar CV
+          </a>
+        </div>
+
+        <div class="flex gap-5">
+          <a href="https://github.com/your-user" target="_blank" aria-label="GitHub"
+             class="text-slate-400 hover:text-[#5aa9ff] transition-all hover:-translate-y-0.5">
+            <ng-icon name="simpleGithub" size="22" />
+          </a>
+          <a href="https://linkedin.com/in/your-user" target="_blank" aria-label="LinkedIn"
+             class="text-slate-400 hover:text-[#5aa9ff] transition-all hover:-translate-y-0.5">
+            <ng-icon name="simpleLinkedin" size="22" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- indicador de scroll -->
+    <div
+      (click)="scrollTo('about')"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 w-[26px] h-[42px] rounded-full border-2 border-white/10
+             cursor-pointer flex justify-center pt-2">
+      <span class="w-1 h-2 bg-[#2f7dfa] rounded-sm animate-bounce"></span>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT / SOBRE MIM (COMPLETO) ==================== -->
+  <section id="about" class="scroll-mt-20 py-24">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">01. Sobre</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-10">Sobre mim</h2>
+
+      <div class="grid md:grid-cols-[280px_1fr] gap-14 items-start">
+        <div class="aspect-square rounded-[14px] border border-white/10 bg-white/[0.03] overflow-hidden relative
+                    ring-1 ring-inset ring-[#2f7dfa]/20 max-w-[220px] md:max-w-none mx-auto md:mx-0">
+          <img src="assets/profile.jpg" alt="Foto de perfil" class="w-full h-full object-cover grayscale-[20%]" />
+        </div>
+
+        <div>
+          <p class="text-slate-400 leading-loose mb-4">
+            Sou desenvolvedor de software focado em construir aplicações web modernas com Angular,
+            TypeScript e Node.js. Gosto de transformar problemas complexos em soluções simples e elegantes.
+          </p>
+          <p class="text-slate-400 leading-loose mb-4">
+            Fora do código, gosto de continuar aprendendo novas tecnologias e contribuir com projetos open source.
+          </p>
+          <p class="text-[#5aa9ff] font-medium flex items-center gap-1.5">
+            <ng-icon name="lucideMapPin" size="16" />
+            Baseado no Brasil
+          </p>
+
+          <div class="flex gap-10 mt-8">
+            <div class="flex flex-col">
+              <strong class="text-3xl text-slate-100">3+</strong>
+              <span class="text-sm text-slate-500">Anos de experiência</span>
+            </div>
+            <div class="flex flex-col">
+              <strong class="text-3xl text-slate-100">20+</strong>
+              <span class="text-sm text-slate-500">Projetos entregues</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills" class="scroll-mt-20 py-24">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">02. Habilidades</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-2">Habilidades</h2>
+      <p class="text-slate-400 mb-9">Tecnologias que eu uso</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div
+          *ngFor="let skill of skills"
+          class="p-[18px] text-center bg-white/[0.03] border border-white/10 rounded-[14px] font-semibold text-slate-100
+                 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff] hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_#2f7dfa55]">
+          {{ skill }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section id="projects" class="scroll-mt-20 py-24">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">03. Projetos</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-2">Projetos</h2>
+      <p class="text-slate-400 mb-9">Algumas coisas que eu construí</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article
+          *ngFor="let project of projects"
+          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px]
+                 transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]">
+          <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3h18v18H3V3zm4 13h2v-6H7v6zm4 0h2V8h-2v8zm4 0h2v-4h-2v4z"/>
+            </svg>
+            <div class="flex gap-3.5">
+              <a [href]="project.repoUrl" target="_blank" aria-label="Ver código"
+                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors">
+                <ng-icon name="simpleGithub" size="18" />
+              </a>
+              <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" aria-label="Ver online"
+                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors">
+                <ng-icon name="lucideExternalLink" size="18" />
+              </a>
+            </div>
+          </div>
+
+          <h3 class="text-lg text-slate-100 mb-2.5">{{ project.title }}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">{{ project.description }}</p>
+
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let tag of project.tags"
+                  class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              {{ tag }}
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="scroll-mt-20 py-24">
+    <div class="max-w-[600px] mx-auto px-6 text-center">
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">04. Contato</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-4">Contato</h2>
+      <p class="text-[#5aa9ff] font-semibold mb-4">Vamos trabalhar juntos</p>
+      <p class="text-slate-400 leading-relaxed mb-10">
+        Fique à vontade para entrar em contato para colaborações ou apenas um olá amigável.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="mailto:your-email@example.com"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
+                  bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]">
+          <ng-icon name="lucideMail" size="16" />
+          Enviar email
+        </a>
+        <a href="https://github.com/your-user" target="_blank"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
+                  border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
+          <ng-icon name="simpleGithub" size="16" />
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/your-user" target="_blank"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
+                  border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
+          <ng-icon name="simpleLinkedin" size="16" />
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-white/10 py-7 bg-[#05070d]">
+  <div class="max-w-[1100px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-sm text-slate-500">
+    <span class="font-mono text-[#5aa9ff]">&lt;Dev/&gt;</span>
+    <p>© {{ year }} — Todos os direitos reservados.</p>
+  </div>
+</footer>
