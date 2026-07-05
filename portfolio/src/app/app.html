@@ -1,14 +1,12 @@
-<!-- ==================== HEADER ==================== -->
 <header
   class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
   [ngClass]="isScrolled ? 'py-3.5 bg-[#05070d]/85 backdrop-blur-md border-b border-white/10' : 'py-5 bg-transparent'"
 >
   <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between">
     <a class="font-mono text-xl font-bold text-slate-100 cursor-pointer" (click)="scrollTo('home')">
-      <span class="text-[#2f7dfa]">&lt;</span>Dev<span class="text-[#2f7dfa]">/&gt;</span>
+      <span class="text-[#2f7dfa]">&lt;</span><span #texto></span><span class="text-[#2f7dfa]">/&gt;</span>
     </a>
 
-    <!-- Nav desktop -->
     <nav class="hidden md:block">
       <ul class="flex gap-8">
         <li>
@@ -16,7 +14,7 @@
              class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
                     after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
                     after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
-            Sobre
+            {{ 'nav.about' | transloco }}
           </a>
         </li>
         <li>
@@ -24,7 +22,7 @@
              class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
                     after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
                     after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
-            Habilidades
+            {{ 'nav.skills' | transloco }}
           </a>
         </li>
         <li>
@@ -32,7 +30,7 @@
              class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
                     after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
                     after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
-            Projetos
+            {{ 'nav.projects' | transloco }}
           </a>
         </li>
         <li>
@@ -40,13 +38,20 @@
              class="cursor-pointer text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative
                     after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0
                     after:bg-[#2f7dfa] after:transition-all hover:after:w-full">
-            Contato
+            {{ 'nav.contact' | transloco }}
           </a>
+        </li>
+        <li class="flex flex-row justify-center items-center gap-2">
+          <button (click)="switchLanguage('pt')">
+            <ng-icon name="flagBr" size="20" class="cursor-pointer hover:scale-110 transition-transform"></ng-icon>
+          </button>
+          <button (click)="switchLanguage('en')">
+            <ng-icon name="flagUs" size="20" class="cursor-pointer hover:scale-110 transition-transform"></ng-icon>
+          </button>
         </li>
       </ul>
     </nav>
 
-    <!-- Botão hambúrguer (mobile) -->
     <button (click)="toggleMenu()" class="md:hidden flex flex-col gap-1.5" aria-label="Menu">
       <span class="w-[22px] h-0.5 bg-slate-100 transition-transform"
             [ngClass]="isMenuOpen ? 'translate-y-[7px] rotate-45' : ''"></span>
@@ -57,39 +62,36 @@
     </button>
   </div>
 
-  <!-- Nav mobile (off-canvas) -->
   <nav
     class="md:hidden fixed top-0 h-screen w-[70%] bg-[#0b0f19] border-l border-white/10 pt-24 transition-[right] duration-300"
     [ngClass]="isMenuOpen ? 'right-0' : '-right-full'"
   >
     <ul class="flex flex-col items-center gap-7">
-      <li><a (click)="scrollTo('about')" class="cursor-pointer text-slate-300">Sobre</a></li>
-      <li><a (click)="scrollTo('skills')" class="cursor-pointer text-slate-300">Habilidades</a></li>
-      <li><a (click)="scrollTo('projects')" class="cursor-pointer text-slate-300">Projetos</a></li>
-      <li><a (click)="scrollTo('contact')" class="cursor-pointer text-slate-300">Contato</a></li>
+      <li><a (click)="scrollTo('about')" class="cursor-pointer text-slate-300">{{ 'nav.about' | transloco }}</a></li>
+      <li><a (click)="scrollTo('skills')" class="cursor-pointer text-slate-300">{{ 'nav.skills' | transloco }}</a></li>
+      <li><a (click)="scrollTo('projects')" class="cursor-pointer text-slate-300">{{ 'nav.projects' | transloco }}</a></li>
+      <li><a (click)="scrollTo('contact')" class="cursor-pointer text-slate-300">{{ 'nav.contact' | transloco }}</a></li>
     </ul>
   </nav>
 </header>
 
 <main class="bg-[#05070d]">
 
-  <!-- ==================== HERO / SOBRE MIM (RESUMO) ==================== -->
   <section id="home" class="relative min-h-screen flex items-center">
     <div class="max-w-[1100px] mx-auto px-6 w-full">
       <div class="max-w-[720px]">
-        <p class="font-mono text-[#5aa9ff] mb-3">Olá, eu sou</p>
+        <p class="font-mono text-[#5aa9ff] mb-3">{{ 'home.greeting' | transloco }}</p>
 
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-[#5aa9ff] bg-clip-text text-transparent">
-          Seu Nome
+          {{ 'home.name' | transloco }}
         </h1>
 
         <h2 class="text-xl md:text-2xl font-medium text-slate-400 mt-2 mb-5">
-          Desenvolvedor Full Stack
+          {{ 'home.role' | transloco }}
         </h2>
 
         <p class="text-slate-400 leading-relaxed max-w-[560px] mb-8">
-          Eu construo aplicações web limpas, escaláveis e performáticas. Apaixonado por resolver
-          problemas reais com código.
+          {{ 'home.description' | transloco }}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 mb-10">
@@ -97,31 +99,29 @@
             (click)="scrollTo('contact')"
             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
                    bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]">
-            Entre em contato
+            {{ 'home.contactButton' | transloco }}
           </button>
-          <a
-            href="assets/cv.pdf" target="_blank"
+
+            <a  href="/portfolio/public/assets/cv.pdf" target="_blank"
             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
-                   border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
-            <ng-icon name="lucideDownload" size="16" />
-            Baixar CV
+                   border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">             <ng-icon name="lucideDownload" size="16" />
+            {{ 'home.downloadCv' | transloco }}
           </a>
         </div>
 
         <div class="flex gap-5">
-          <a href="https://github.com/your-user" target="_blank" aria-label="GitHub"
+          <a href="https://github.com/devjoaopr" target="_blank" aria-label="GitHub"
              class="text-slate-400 hover:text-[#5aa9ff] transition-all hover:-translate-y-0.5">
             <ng-icon name="simpleGithub" size="22" />
           </a>
-          <a href="https://linkedin.com/in/your-user" target="_blank" aria-label="LinkedIn"
+          <a href="https://linkedin.com/in/devjoaopr" target="_blank" aria-label="LinkedIn"
              class="text-slate-400 hover:text-[#5aa9ff] transition-all hover:-translate-y-0.5">
-            <ng-icon name="simpleLinkedin" size="22" />
+            <ng-icon name="lucideLinkedin" size="22" />
           </a>
         </div>
       </div>
     </div>
 
-    <!-- indicador de scroll -->
     <div
       (click)="scrollTo('about')"
       class="absolute bottom-8 left-1/2 -translate-x-1/2 w-[26px] h-[42px] rounded-full border-2 border-white/10
@@ -130,11 +130,10 @@
     </div>
   </section>
 
-  <!-- ==================== ABOUT / SOBRE MIM (COMPLETO) ==================== -->
   <section id="about" class="scroll-mt-20 py-24">
     <div class="max-w-[1100px] mx-auto px-6">
-      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">01. Sobre</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-10">Sobre mim</h2>
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{ 'others.sectionNumber' | transloco }}</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-10">{{ 'others.title' | transloco }}</h2>
 
       <div class="grid md:grid-cols-[280px_1fr] gap-14 items-start">
         <div class="aspect-square rounded-[14px] border border-white/10 bg-white/[0.03] overflow-hidden relative
@@ -144,25 +143,21 @@
 
         <div>
           <p class="text-slate-400 leading-loose mb-4">
-            Sou desenvolvedor de software focado em construir aplicações web modernas com Angular,
-            TypeScript e Node.js. Gosto de transformar problemas complexos em soluções simples e elegantes.
-          </p>
-          <p class="text-slate-400 leading-loose mb-4">
-            Fora do código, gosto de continuar aprendendo novas tecnologias e contribuir com projetos open source.
+            {{ 'about.full' | transloco }}
           </p>
           <p class="text-[#5aa9ff] font-medium flex items-center gap-1.5">
             <ng-icon name="lucideMapPin" size="16" />
-            Baseado no Brasil
+            {{ 'others.location' | transloco }}
           </p>
 
           <div class="flex gap-10 mt-8">
             <div class="flex flex-col">
-              <strong class="text-3xl text-slate-100">3+</strong>
-              <span class="text-sm text-slate-500">Anos de experiência</span>
+              <strong class="text-3xl text-slate-100">1</strong>
+              <span class="text-sm text-slate-500">{{ 'others.yearsExperience' | transloco }}</span>
             </div>
             <div class="flex flex-col">
-              <strong class="text-3xl text-slate-100">20+</strong>
-              <span class="text-sm text-slate-500">Projetos entregues</span>
+              <strong class="text-3xl text-slate-100">2+</strong>
+              <span class="text-sm text-slate-500">{{ 'others.projectsDelivered' | transloco }}</span>
             </div>
           </div>
         </div>
@@ -170,12 +165,11 @@
     </div>
   </section>
 
-  <!-- ==================== SKILLS ==================== -->
   <section id="skills" class="scroll-mt-20 py-24">
     <div class="max-w-[1100px] mx-auto px-6">
-      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">02. Habilidades</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-2">Habilidades</h2>
-      <p class="text-slate-400 mb-9">Tecnologias que eu uso</p>
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{ 'skills.sectionNumber' | transloco }}</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-2">{{ 'skills.title' | transloco }}</h2>
+      <p class="text-slate-400 mb-9">{{ 'skills.subtitle' | transloco }}</p>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <div
@@ -188,12 +182,11 @@
     </div>
   </section>
 
-  <!-- ==================== PROJECTS ==================== -->
   <section id="projects" class="scroll-mt-20 py-24">
     <div class="max-w-[1100px] mx-auto px-6">
-      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">03. Projetos</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-2">Projetos</h2>
-      <p class="text-slate-400 mb-9">Algumas coisas que eu construí</p>
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{ 'projects.sectionNumber' | transloco }}</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-2">{{ 'projects.title' | transloco }}</h2>
+      <p class="text-slate-400 mb-9">{{ 'projects.subtitle' | transloco }}</p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <article
@@ -205,19 +198,19 @@
               <path d="M3 3h18v18H3V3zm4 13h2v-6H7v6zm4 0h2V8h-2v8zm4 0h2v-4h-2v4z"/>
             </svg>
             <div class="flex gap-3.5">
-              <a [href]="project.repoUrl" target="_blank" aria-label="Ver código"
+              <a [href]="project.repoUrl" target="_blank" [attr.aria-label]="'projects.viewCode' | transloco"
                  class="text-slate-400 hover:text-[#5aa9ff] transition-colors">
                 <ng-icon name="simpleGithub" size="18" />
               </a>
-              <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" aria-label="Ver online"
+              <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" [attr.aria-label]="'projects.viewDemo' | transloco"
                  class="text-slate-400 hover:text-[#5aa9ff] transition-colors">
                 <ng-icon name="lucideExternalLink" size="18" />
               </a>
             </div>
           </div>
 
-          <h3 class="text-lg text-slate-100 mb-2.5">{{ project.title }}</h3>
-          <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">{{ project.description }}</p>
+          <h3 class="text-lg text-slate-100 mb-2.5">{{ project.title| transloco }}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">{{ project.description| transloco }}</p>
 
           <div class="flex flex-wrap gap-2">
             <span *ngFor="let tag of project.tags"
@@ -230,45 +223,20 @@
     </div>
   </section>
 
-  <!-- ==================== CONTACT ==================== -->
   <section id="contact" class="scroll-mt-20 py-24">
     <div class="max-w-[600px] mx-auto px-6 text-center">
-      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">04. Contato</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-4">Contato</h2>
-      <p class="text-[#5aa9ff] font-semibold mb-4">Vamos trabalhar juntos</p>
+      <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{ 'contact.sectionNumber' | transloco }}</span>
+      <h2 class="text-3xl font-bold text-slate-100 mb-4">{{ 'contact.title' | transloco }}</h2>
+      <p class="text-[#5aa9ff] font-semibold mb-4">{{ 'contact.subtitle' | transloco }}</p>
       <p class="text-slate-400 leading-relaxed mb-10">
-        Fique à vontade para entrar em contato para colaborações ou apenas um olá amigável.
+        {{ 'contact.description' | transloco }}
       </p>
 
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="mailto:your-email@example.com"
+        <a href="mailto:joaoprsantos1@outlook.com"
            class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
                   bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]">
           <ng-icon name="lucideMail" size="16" />
-          Enviar email
+          {{ 'contact.sendEmail' | transloco }}
         </a>
-        <a href="https://github.com/your-user" target="_blank"
-           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
-                  border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
-          <ng-icon name="simpleGithub" size="16" />
-          GitHub
-        </a>
-        <a href="https://linkedin.com/in/your-user" target="_blank"
-           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm
-                  border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]">
-          <ng-icon name="simpleLinkedin" size="16" />
-          LinkedIn
-        </a>
-      </div>
-    </div>
-  </section>
 
-</main>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="border-t border-white/10 py-7 bg-[#05070d]">
-  <div class="max-w-[1100px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-sm text-slate-500">
-    <span class="font-mono text-[#5aa9ff]">&lt;Dev/&gt;</span>
-    <p>© {{ year }} — Todos os direitos reservados.</p>
-  </div>
-</footer>

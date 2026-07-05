@@ -1,0 +1,66 @@
+{
+  "about": {
+    "full": "Atualmente atuo como desenvolvedor Full Stack, com experiência prática no desenvolvimento e manutenção de aplicações web escaláveis. Participo da migração de uma aplicação monolítica em Flask para uma arquitetura em Spring Boot, atuando no backend com APIs REST, Spring Security + JWT, Apache Kafka (comunicação assíncrona), Liquibase (versionamento de banco) e Docker. No frontend, desenvolvo interfaces responsivas e integro APIs utilizando Angular. Tenho forte foco em escrever código limpo e manutenível, transformando requisitos de negócio em soluções técnicas confiáveis. Busco constantemente aprimorar meus conhecimentos em arquitetura de software, sistemas distribuídos e boas práticas de backend, tanto no trabalho quanto em projetos pessoais.",
+    "short": "Desenvolvedor Full Stack com experiência em Java/Spring Boot e Angular. Atuo na migração de sistemas monolíticos para arquiteturas modernas, trabalhando com APIs REST, mensageria (Kafka), autenticação segura (JWT) e containerização (Docker). Foco em código limpo e soluções técnicas confiáveis."
+  },
+
+
+  "nav": {
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "home": {
+    "greeting": "Olá, eu sou",
+    "name": "João Pedro Ramos dos Santos",
+    "role": "Desenvolvedor Full Stack",
+    "description": "Eu construo aplicações web limpas, escaláveis e performáticas. Apaixonado por resolver problemas reais com código.",
+    "contactButton": "Entre em contato",
+    "downloadCv": "Baixar CV"
+  },
+  "others": {
+    "sectionNumber": "01. Sobre",
+    "title": "Sobre mim",
+    "paragraph1": "Sou desenvolvedor de software focado em construir aplicações web modernas com Angular, TypeScript e Node.js. Gosto de transformar problemas complexos em soluções simples e elegantes.",
+    "paragraph2": "Fora do código, gosto de continuar aprendendo novas tecnologias e contribuir com projetos open source.",
+    "location": "Baseado no Brasil",
+    "yearsExperience": "Anos de experiência",
+    "projectsDelivered": "Projetos entregues"
+  },
+  "skills": {
+    "sectionNumber": "02. Habilidades",
+    "title": "Habilidades",
+    "subtitle": "Tecnologias que eu uso"
+  },
+  "projects": {
+    "sectionNumber": "03. Projetos",
+    "title": "Projetos",
+    "subtitle": "Algumas coisas que eu construí",
+    "viewCode": "Ver código",
+    "viewDemo": "Ver online",
+    "list": {
+      "one": {
+        "title": "Projeto Um",
+        "description": "Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas."
+      },
+      "two": {
+        "title": "Projeto Dois",
+        "description": "Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas."
+      },
+      "three": {
+        "title": "Projeto Três",
+        "description": "Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas."
+      }
+    }
+  },
+  "contact": {
+    "sectionNumber": "04. Contato",
+    "title": "Contato",
+    "subtitle": "Vamos trabalhar juntos",
+    "description": "Fique à vontade para entrar em contato para colaborações ou apenas um olá amigável.",
+    "sendEmail": "Enviar email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}
