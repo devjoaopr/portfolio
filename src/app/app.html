@@ -2,12 +2,12 @@
   class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
   [ngClass]="
     isScrolled
-      ? 'py-3.5 bg-[#05070d]/85 backdrop-blur-md border-b border-white/10'
-      : 'py-5 bg-transparent'
+      ? 'py-3 md:py-3.5 bg-[#05070d]/85 backdrop-blur-md border-b border-white/10'
+      : 'py-4 md:py-5 bg-transparent'
   "
 >
-  <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between">
-    <a class="font-mono text-xl font-bold text-slate-100 cursor-pointer" (click)="scrollTo('home')">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between">
+    <a class="font-mono text-lg sm:text-xl font-bold text-slate-100 cursor-pointer" (click)="scrollTo('home')">
       <span class="text-[#2f7dfa]">&lt;</span><span #texto></span
       ><span class="text-[#2f7dfa]">/&gt;</span>
     </a>
@@ -65,7 +65,7 @@
       </ul>
     </nav>
 
-    <button (click)="toggleMenu()" class="md:hidden flex flex-col gap-1.5" aria-label="Menu">
+    <button (click)="toggleMenu()" class="md:hidden flex flex-col gap-1.5 p-2 -mr-2" aria-label="Menu">
       <span
         class="w-[22px] h-0.5 bg-slate-100 transition-transform"
         [ngClass]="isMenuOpen ? 'translate-y-[7px] rotate-45' : ''"
@@ -81,59 +81,74 @@
     </button>
   </div>
 
+  <!-- Overlay para fechar o menu ao tocar fora -->
+  <div
+    *ngIf="isMenuOpen"
+    (click)="toggleMenu()"
+    class="md:hidden fixed inset-0 bg-black/50 z-40"
+  ></div>
+
   <nav
-    class="md:hidden fixed top-0 h-screen w-[70%] bg-[#0b0f19] border-l border-white/10 pt-24 transition-[right] duration-300"
+    class="md:hidden fixed top-0 h-screen w-[78%] max-w-[300px] bg-[#0b0f19] border-l border-white/10 pt-24 transition-[right] duration-300 z-50 right-[-100%]"
     [ngClass]="isMenuOpen ? 'right-0' : '-right-full'"
   >
     <ul class="flex flex-col items-center gap-7">
       <li>
-        <a (click)="scrollTo('about')" class="cursor-pointer text-slate-300">{{
+        <a (click)="scrollTo('about'); toggleMenu()" class="cursor-pointer text-slate-300 text-base">{{
           'nav.about' | transloco
         }}</a>
       </li>
       <li>
-        <a (click)="scrollTo('skills')" class="cursor-pointer text-slate-300">{{
+        <a (click)="scrollTo('skills'); toggleMenu()" class="cursor-pointer text-slate-300 text-base">{{
           'nav.skills' | transloco
         }}</a>
       </li>
       <li>
-        <a (click)="scrollTo('projects')" class="cursor-pointer text-slate-300">{{
+        <a (click)="scrollTo('projects'); toggleMenu()" class="cursor-pointer text-slate-300 text-base">{{
           'nav.projects' | transloco
         }}</a>
       </li>
       <li>
-        <a (click)="scrollTo('contact')" class="cursor-pointer text-slate-300">{{
+        <a (click)="scrollTo('contact'); toggleMenu()" class="cursor-pointer text-slate-300 text-base">{{
           'nav.contact' | transloco
         }}</a>
+      </li>
+      <li class="flex flex-row justify-center items-center gap-4 mt-2">
+        <button (click)="switchLanguage('pt-br')">
+          <ng-icon name="flagBr" size="22" class="cursor-pointer"></ng-icon>
+        </button>
+        <button (click)="switchLanguage('en')">
+          <ng-icon name="flagUs" size="22" class="cursor-pointer"></ng-icon>
+        </button>
       </li>
     </ul>
   </nav>
 </header>
 
-<main class="bg-[#05070d]">
-  <section id="home" class="relative min-h-screen flex items-center">
-    <div class="max-w-[1100px] mx-auto px-6 w-full">
+<main class="bg-[#05070d] overflow-x-hidden">
+  <section id="home" class="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-0 md:pb-0">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 w-full">
       <div class="max-w-[720px]">
-        <p class="font-mono text-[#5aa9ff] mb-3">{{ 'home.greeting' | transloco }}</p>
+        <p class="font-mono text-sm sm:text-base text-[#5aa9ff] mb-3">{{ 'home.greeting' | transloco }}</p>
 
         <h1
-          class="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-[#5aa9ff] bg-clip-text text-transparent"
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-[#5aa9ff] bg-clip-text text-transparent break-words"
         >
           {{ 'home.name' | transloco }}
         </h1>
 
-        <h2 class="text-xl md:text-2xl font-medium text-slate-400 mt-2 mb-5">
+        <h2 class="text-lg sm:text-xl md:text-2xl font-medium text-slate-400 mt-2 mb-5">
           {{ 'home.role' | transloco }}
         </h2>
 
-        <p class="text-slate-400 leading-relaxed max-w-[560px] mb-8">
+        <p class="text-sm sm:text-base text-slate-400 leading-relaxed max-w-[560px] mb-8">
           {{ 'home.description' | transloco }}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 mb-10">
           <button
             (click)="scrollTo('contact')"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]"
           >
             {{ 'home.contactButton' | transloco }}
           </button>
@@ -141,7 +156,7 @@
           <a
             href="assets/cv.pdf"
             target="_blank"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm border border-white/10 text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff]"
           >
             <ng-icon name="lucideDownload" size="16" />
             {{ 'home.downloadCv' | transloco }}
@@ -171,22 +186,22 @@
 
     <div
       (click)="scrollTo('about')"
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 w-[26px] h-[42px] rounded-full border-2 border-white/10 cursor-pointer flex justify-center pt-2"
+      class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 w-[26px] h-[42px] rounded-full border-2 border-white/10 cursor-pointer justify-center pt-2"
     >
       <span class="w-1 h-2 bg-[#2f7dfa] rounded-sm animate-bounce"></span>
     </div>
   </section>
 
-  <section id="about" class="scroll-mt-20 py-24">
-    <div class="max-w-[1100px] mx-auto px-6">
+  <section id="about" class="scroll-mt-20 py-16 md:py-24">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
       <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{
         'others.sectionNumber' | transloco
       }}</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-10">{{ 'others.title' | transloco }}</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 md:mb-10">{{ 'others.title' | transloco }}</h2>
 
-      <div class="grid md:grid-cols-[280px_1fr] gap-14 items-start">
+      <div class="grid md:grid-cols-[280px_1fr] gap-8 md:gap-14 items-start">
         <div
-          class="aspect-square rounded-[14px] border border-white/10 bg-white/[0.03] overflow-hidden relative ring-1 ring-inset ring-[#2f7dfa]/20 max-w-[220px] md:max-w-none mx-auto md:mx-0"
+          class="aspect-square rounded-[14px] border border-white/10 bg-white/[0.03] overflow-hidden relative ring-1 ring-inset ring-[#2f7dfa]/20 w-[180px] sm:w-[220px] md:w-full max-w-[220px] md:max-w-none mx-auto md:mx-0"
         >
           <img
             src="./assets/profile.jpg"
@@ -195,23 +210,23 @@
           />
         </div>
 
-        <div>
-          <p class="text-slate-400 leading-loose mb-4">
+        <div class="text-center md:text-left">
+          <p class="text-sm sm:text-base text-slate-400 leading-loose mb-4">
             {{ 'about.full' | transloco }}
           </p>
-          <p class="text-[#5aa9ff] font-medium flex items-center gap-1.5">
+          <p class="text-[#5aa9ff] font-medium flex items-center justify-center md:justify-start gap-1.5">
             <ng-icon name="lucideMapPin" size="16" />
             {{ 'others.location' | transloco }}
           </p>
 
-          <div class="flex gap-10 mt-8">
-            <div class="flex flex-col">
-              <strong class="text-3xl text-slate-100">1</strong>
-              <span class="text-sm text-slate-500">{{ 'others.yearsExperience' | transloco }}</span>
+          <div class="flex justify-center md:justify-start gap-10 mt-8">
+            <div class="flex flex-col items-center md:items-start">
+              <strong class="text-2xl sm:text-3xl text-slate-100">1</strong>
+              <span class="text-sm text-slate-500 text-center md:text-left">{{ 'others.yearsExperience' | transloco }}</span>
             </div>
-            <div class="flex flex-col">
-              <strong class="text-3xl text-slate-100">2+</strong>
-              <span class="text-sm text-slate-500">{{
+            <div class="flex flex-col items-center md:items-start">
+              <strong class="text-2xl sm:text-3xl text-slate-100">2+</strong>
+              <span class="text-sm text-slate-500 text-center md:text-left">{{
                 'others.projectsDelivered' | transloco
               }}</span>
             </div>
@@ -221,18 +236,18 @@
     </div>
   </section>
 
-  <section id="skills" class="scroll-mt-20 py-24">
-    <div class="max-w-[1100px] mx-auto px-6">
+  <section id="skills" class="scroll-mt-20 py-16 md:py-24">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
       <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{
         'skills.sectionNumber' | transloco
       }}</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-2">{{ 'skills.title' | transloco }}</h2>
-      <p class="text-slate-400 mb-9">{{ 'skills.subtitle' | transloco }}</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">{{ 'skills.title' | transloco }}</h2>
+      <p class="text-sm sm:text-base text-slate-400 mb-7 md:mb-9">{{ 'skills.subtitle' | transloco }}</p>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
         <div
           *ngFor="let skill of skills"
-          class="p-[18px] text-center bg-white/[0.03] border border-white/10 rounded-[14px] font-semibold text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff] hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_#2f7dfa55]"
+          class="p-3.5 sm:p-[18px] text-center bg-white/[0.03] border border-white/10 rounded-[14px] text-sm sm:text-base font-semibold text-slate-100 transition-all hover:border-[#2f7dfa] hover:text-[#5aa9ff] hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_#2f7dfa55]"
         >
           {{ skill }}
         </div>
@@ -240,18 +255,17 @@
     </div>
   </section>
 
-  <section id="projects" class="scroll-mt-20 py-24">
-    <div class="max-w-[1100px] mx-auto px-6">
+  <section id="projects" class="scroll-mt-20 py-16 md:py-24">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
       <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{
         'projects.sectionNumber' | transloco
       }}</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-2">{{ 'projects.title' | transloco }}</h2>
-      <p class="text-slate-400 mb-9">{{ 'projects.subtitle' | transloco }}</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">{{ 'projects.title' | transloco }}</h2>
+      <p class="text-sm sm:text-base text-slate-400 mb-7 md:mb-9">{{ 'projects.subtitle' | transloco }}</p>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         <article
-
-          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
+          class="flex flex-col p-5 sm:p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
         >
           <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -259,7 +273,7 @@
             </svg>
             <div class="flex gap-3.5">
               <a
-                href= "https://github.com/devjoaopr/workshop-project"
+                href="https://github.com/devjoaopr/workshop-project"
                 target="_blank"
                 [attr.aria-label]="'projects.viewCode' | transloco"
                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
@@ -277,44 +291,29 @@
             </div>
           </div>
 
-          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project1.title' | transloco }}</h3>
+          <h3 class="text-base sm:text-lg text-slate-100 mb-2.5">{{ 'project1.title' | transloco }}</h3>
           <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
             {{ 'project1.description' | transloco }}
           </p>
 
           <div class="flex flex-wrap gap-2">
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Spring boot
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Liquibase
             </span>
-
-                  <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Postgres
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Angular
             </span>
-
           </div>
         </article>
 
-                <article
-
-          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
+        <article
+          class="flex flex-col p-5 sm:p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
         >
           <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -340,43 +339,29 @@
             </div>
           </div>
 
-          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project2.title' | transloco }}</h3>
+          <h3 class="text-base sm:text-lg text-slate-100 mb-2.5">{{ 'project2.title' | transloco }}</h3>
           <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
             {{ 'project2.description' | transloco }}
           </p>
 
           <div class="flex flex-wrap gap-2">
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Spring boot
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Liquibase
             </span>
-
-                  <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Postgres
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
               Angular
             </span>
-
           </div>
         </article>
-                <article
 
-          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
+        <article
+          class="flex flex-col p-5 sm:p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
         >
           <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -384,7 +369,7 @@
             </svg>
             <div class="flex gap-3.5">
               <a
-                [href]=""
+                href="https://github.com/devjoaopr/archi-asj-lab"
                 target="_blank"
                 [attr.aria-label]="'projects.viewCode' | transloco"
                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
@@ -392,8 +377,9 @@
                 <ng-icon name="simpleGithub" size="18" />
               </a>
               <a
-                href= "https://github.com/devjoaopr/archi-asj-lab",
+                href="https://github.com/devjoaopr/archi-asj-lab"
                 target="_blank"
+                [attr.aria-label]="'projects.viewDemo' | transloco"
                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
               >
                 <ng-icon name="lucideExternalLink" size="18" />
@@ -401,41 +387,26 @@
             </div>
           </div>
 
-          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project3.title' | transloco }}</h3>
+          <h3 class="text-base sm:text-lg text-slate-100 mb-2.5">{{ 'project3.title' | transloco }}</h3>
           <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
             {{ 'project3.description' | transloco }}
           </p>
 
           <div class="flex flex-wrap gap-2">
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
-            Spring boot
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              Spring boot
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
-            Eureka
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              Eureka
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
-            Liquibase
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              Liquibase
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
-            Postgres
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              Postgres
             </span>
-            <span
-
-              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
-            >
-            Kafka
+            <span class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full">
+              Kafka
             </span>
           </div>
         </article>
@@ -443,21 +414,21 @@
     </div>
   </section>
 
-  <section id="contact" class="scroll-mt-20 py-24">
-    <div class="max-w-[600px] mx-auto px-6 text-center">
+  <section id="contact" class="scroll-mt-20 py-16 md:py-24">
+    <div class="max-w-[600px] mx-auto px-4 sm:px-6 text-center">
       <span class="block text-[#5aa9ff] text-sm uppercase tracking-[2px] mb-2">{{
         'contact.sectionNumber' | transloco
       }}</span>
-      <h2 class="text-3xl font-bold text-slate-100 mb-4">{{ 'contact.title' | transloco }}</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">{{ 'contact.title' | transloco }}</h2>
       <p class="text-[#5aa9ff] font-semibold mb-4">{{ 'contact.subtitle' | transloco }}</p>
-      <p class="text-slate-400 leading-relaxed mb-10">
+      <p class="text-sm sm:text-base text-slate-400 leading-relaxed mb-10">
         {{ 'contact.description' | transloco }}
       </p>
 
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="mailto:joaoprsantos1@outlook.com"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] font-semibold text-sm bg-[#2f7dfa] text-white transition-all hover:bg-[#5aa9ff] hover:-translate-y-0.5 hover:shadow-[0_0_24px_#2f7dfa55]"
         >
           <ng-icon name="lucideMail" size="16" />
           {{ 'contact.sendEmail' | transloco }}
