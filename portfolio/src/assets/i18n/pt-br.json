@@ -4,7 +4,6 @@
     "short": "Desenvolvedor Full Stack com experiência em Java/Spring Boot e Angular. Atuo na migração de sistemas monolíticos para arquiteturas modernas, trabalhando com APIs REST, mensageria (Kafka), autenticação segura (JWT) e containerização (Docker). Foco em código limpo e soluções técnicas confiáveis."
   },
 
-
   "nav": {
     "about": "Sobre",
     "skills": "Habilidades",
@@ -12,10 +11,10 @@
     "contact": "Contato"
   },
   "home": {
-    "greeting": "Olá, eu sou",
-    "name": "João Pedro Ramos dos Santos",
+    "greeting": "Olá, meu nome é",
+    "name": "João Pedro Ramos dos Santos ",
     "role": "Desenvolvedor Full Stack",
-    "description": "Eu construo aplicações web limpas, escaláveis e performáticas. Apaixonado por resolver problemas reais com código.",
+    "description": "Eu sou um desenvolvedor web focado no desenvolvimento Full-Stack com Angular e Java (Spring boot).",
     "contactButton": "Entre em contato",
     "downloadCv": "Baixar CV"
   },
@@ -62,5 +61,18 @@
     "sendEmail": "Enviar email",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+
+  "project1": {
+    "title": "Aplicação de administração financeira",
+    "description": "Iniciei o desenvolvimento de uma aplicação voltada para auxiliar no gerenciamento financeiro."
+  },
+  "project2": {
+    "title": "Aplicação para administração de padaria",
+    "description": "Também em desenvolvimento, é uma aplicação voltada para auxiliar no gerenciamento de padarias. Estou desenvolvendo como um favor para um amigo."
+  },
+  "project3": {
+    "title": "API criada com arquitetura de microserviços",
+    "description": "Eu também desenvolvi uma API utilizando uma arquitetura de microserviços, com kafka, liquibase, eureka, gateway e docker. Feita como um projeto pessoal para estudo e aprendizado de novas tecnologias."
   }
 }

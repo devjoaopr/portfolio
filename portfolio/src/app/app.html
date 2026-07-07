@@ -250,7 +250,7 @@
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <article
-          *ngFor="let project of projects"
+
           class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
         >
           <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
@@ -259,7 +259,7 @@
             </svg>
             <div class="flex gap-3.5">
               <a
-                [href]="project.repoUrl"
+                [href]=""
                 target="_blank"
                 [attr.aria-label]="'projects.viewCode' | transloco"
                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
@@ -267,8 +267,7 @@
                 <ng-icon name="simpleGithub" size="18" />
               </a>
               <a
-                *ngIf="project.demoUrl"
-                [href]="project.demoUrl"
+                [href]=""
                 target="_blank"
                 [attr.aria-label]="'projects.viewDemo' | transloco"
                 class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
@@ -278,17 +277,165 @@
             </div>
           </div>
 
-          <h3 class="text-lg text-slate-100 mb-2.5">{{ project.title | transloco }}</h3>
+          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project1.title' | transloco }}</h3>
           <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
-            {{ project.description | transloco }}
+            {{ 'project1.description' | transloco }}
           </p>
 
           <div class="flex flex-wrap gap-2">
             <span
-              *ngFor="let tag of project.tags"
+
               class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
             >
-              {{ tag }}
+              Spring boot
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Liquibase
+            </span>
+
+                  <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Postgres
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Angular
+            </span>
+
+          </div>
+        </article>
+
+                <article
+
+          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
+        >
+          <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3h18v18H3V3zm4 13h2v-6H7v6zm4 0h2V8h-2v8zm4 0h2v-4h-2v4z" />
+            </svg>
+            <div class="flex gap-3.5">
+              <a
+                [href]=""
+                target="_blank"
+                [attr.aria-label]="'projects.viewCode' | transloco"
+                class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
+              >
+                <ng-icon name="simpleGithub" size="18" />
+              </a>
+              <a
+                [href]=""
+                target="_blank"
+                [attr.aria-label]="'projects.viewDemo' | transloco"
+                class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
+              >
+                <ng-icon name="lucideExternalLink" size="18" />
+              </a>
+            </div>
+          </div>
+
+          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project2.title' | transloco }}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
+            {{ 'project2.description' | transloco }}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Spring boot
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Liquibase
+            </span>
+
+                  <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Postgres
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+              Angular
+            </span>
+
+          </div>
+        </article>
+                <article
+
+          class="flex flex-col p-7 bg-white/[0.03] border border-white/10 rounded-[14px] transition-all hover:border-[#2f7dfa] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_#2f7dfa55]"
+        >
+          <div class="flex items-center justify-between text-[#5aa9ff] mb-5">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3h18v18H3V3zm4 13h2v-6H7v6zm4 0h2V8h-2v8zm4 0h2v-4h-2v4z" />
+            </svg>
+            <div class="flex gap-3.5">
+              <a
+                [href]=""
+                target="_blank"
+                [attr.aria-label]="'projects.viewCode' | transloco"
+                class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
+              >
+                <ng-icon name="simpleGithub" size="18" />
+              </a>
+              <a
+                href= "https://github.com/devjoaopr/archi-asj-lab",
+                target="_blank"
+                class="text-slate-400 hover:text-[#5aa9ff] transition-colors"
+              >
+                <ng-icon name="lucideExternalLink" size="18" />
+              </a>
+            </div>
+          </div>
+
+          <h3 class="text-lg text-slate-100 mb-2.5">{{ 'project3.title' | transloco }}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-5">
+            {{ 'project3.description' | transloco }}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+            Spring boot
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+            Eureka
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+            Liquibase
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+            Postgres
+            </span>
+            <span
+
+              class="font-mono text-xs text-[#5aa9ff] bg-[#1a2540] px-2.5 py-1 rounded-full"
+            >
+            Kafka
             </span>
           </div>
         </article>

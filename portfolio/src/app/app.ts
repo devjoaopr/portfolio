@@ -57,7 +57,7 @@ export class AppComponent implements AfterViewInit {
   ];
   fraseIndex = 0;
   charIndex = 0;
-  apagando = false;
+  deleting = false;
 
   skills = [
     'Angular',
@@ -74,31 +74,8 @@ export class AppComponent implements AfterViewInit {
     'Flask',
   ];
 
-  projects: Project[] = [
-    {
-      title: 'Projeto Um',
-      description:
-        'Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas.',
-      tags: ['Angular', 'TypeScript', 'Tailwind'],
-      repoUrl: 'https://github.com/your-user/project-one',
-      demoUrl: 'https://your-demo-link.com',
-    },
-    {
-      title: 'Projeto Dois',
-      description:
-        'Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas.',
-      tags: ['Node.js', 'Express', 'MongoDB'],
-      repoUrl: 'https://github.com/your-user/project-two',
-    },
-    {
-      title: 'Projeto Três',
-      description:
-        'Descrição curta do projeto explicando o problema resolvido e as tecnologias usadas.',
-      tags: ['Angular', 'NgRx', 'RxJS'],
-      repoUrl: 'https://github.com/your-user/project-three',
-      demoUrl: 'https://your-demo-link.com',
-    },
-  ];
+
+
   @ViewChild('texto') textoRef!: ElementRef<HTMLSpanElement>;
 
   ngAfterViewInit() {
@@ -123,12 +100,12 @@ export class AppComponent implements AfterViewInit {
     const currentPhrase = this.frases[this.fraseIndex];
     const element = this.textoRef.nativeElement;
 
-    if (!this.apagando) {
+    if (!this.deleting) {
       element.textContent = currentPhrase.substring(0, this.charIndex + 1);
       this.charIndex++;
 
       if (this.charIndex === currentPhrase.length) {
-        this.apagando = true;
+        this.deleting = true;
         setTimeout(() => this.writing(), 1000);
         return;
       }
@@ -137,13 +114,13 @@ export class AppComponent implements AfterViewInit {
       this.charIndex--;
 
       if (this.charIndex === 0) {
-        this.apagando = false;
+        this.deleting = false;
         this.fraseIndex = (this.fraseIndex + 1) % this.frases.length;
       }
     }
 
-    const velocidade = this.apagando ? 50 : 100;
-    setTimeout(() => this.writing(), velocidade);
+    const speed = this.deleting ? 50 : 100;
+    setTimeout(() => this.writing(), speed);
   }
 
   switchLanguage(lang: string) {

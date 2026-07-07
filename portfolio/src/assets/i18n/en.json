@@ -14,7 +14,7 @@
     "greeting": "Hi, I'm",
     "name": "João Pedro Ramos dos Santos",
     "role": "Full Stack Developer",
-    "description": "I build clean, scalable, and high-performance web applications. Passionate about solving real problems with code.",
+    "description": "I am a web developer focused on Full-Stack development with Angular and Java (Spring boot).",
     "contactButton": "Get in touch",
     "downloadCv": "Download CV"
   },
@@ -61,7 +61,19 @@
     "sendEmail": "Send email",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+
+  "project1": {
+    "title": "Finance Application",
+    "description": "I started the development of an application focused on helping finance management."
+  },
+  "project2": {
+    "title": "Bakery Application",
+    "description": "Also in development, it's an application focused on helping bakery management, its a favor for a friend."
+  },
+
+  "project3": {
+    "title": "API Built with a Microservices Architecture",
+    "description": "I also developed an API using a microservices architecture, featuring Kafka, Liquibase, Eureka, Gateway, and Docker. It was built as a personal project to study and learn new technologies."
   }
 }
-
-
